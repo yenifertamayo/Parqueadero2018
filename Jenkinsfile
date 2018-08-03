@@ -30,7 +30,6 @@ pipeline {
                           submoduleCfg                     : [],
                           userRemoteConfigs                : [[credentialsId: 'GitHub_yenifertamayo',
                                                                url          : 'https://github.com/yenifertamayo/Parqueadero2018']]])
-            	sh 'gradle clean'
             }
         }
        
@@ -47,11 +46,13 @@ pipeline {
                 sh 'gradle test'
             }
         }
+        
         stage('Integration Tests') {
             steps {
                 echo "------------>Integration Tests<------------"
             }
         }
+        
         stage('Static Code Analysis') {
             steps {
                 echo '------------>Análisis de código estático<------------'
@@ -61,14 +62,13 @@ pipeline {
             }
         }
 	
-		
 		stage('Build') {
 			steps {
 				echo "------------>Build<------------"
 				sh 'gradle build -x test'
 			}
 		}
-	}}
+	}
 	
 	post {
 		always {
