@@ -33,8 +33,7 @@ pipeline {
             	sh 'gradle clean'
             }
         }
-        
-		
+       
 		stage('Compile') {
 			steps{
 				echo "------------>Unit Tests<------------"
@@ -42,14 +41,18 @@ pipeline {
 			}
 		}
 		
-	stage('Unit Tests') {
-			steps{
-				echo "------------>Unit Tests<------------"
-				sh 'gradle test'
-			}
-		}
-		
-		stage('Static Code Analysis') {
+	 	stage('Unit Tests') {
+            steps {
+                echo "------------>Unit Tests<------------"
+                sh 'gradle test'
+            }
+        }
+        stage('Integration Tests') {
+            steps {
+                echo "------------>Integration Tests<------------"
+            }
+        }
+        stage('Static Code Analysis') {
             steps {
                 echo '------------>Análisis de código estático<------------'
                 withSonarQubeEnv('Sonar') {
@@ -57,6 +60,7 @@ pipeline {
                 }
             }
         }
+	
 		
 		stage('Build') {
 			steps {
@@ -78,7 +82,7 @@ pipeline {
 		failure {
 			echo 'This will run only if failed'
 			//send notifications about a Pipeline to an email
-			mail (to: yeniferatamayo@ceiba.com.co',
+			mail (to: 'yeniferatamayo@ceiba.com.co',
 			      subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
 			      body: "Something is wrong with ${env.BUILD_URL}")
 		
