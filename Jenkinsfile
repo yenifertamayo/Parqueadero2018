@@ -3,7 +3,6 @@ pipeline {
     agent {
         label 'Slave_Induccion'
     }
-    
     //Opciones específicas de Pipeline dentro del Pipeline
     options {
         //Mantener artefactos y salida de consola para el # específico de ejecuciones recientes del Pipeline.
@@ -11,12 +10,12 @@ pipeline {
         //No permitir ejecuciones concurrentes de Pipeline
         disableConcurrentBuilds()
     }
-    
     //Una sección que define las herramientas para autoinstalar y poner en la PATH
     tools {
         jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master
         gradle 'Gradle4.5_Centos' //Preinstalada en la Configuración del Master
     }
+    
     
     //Aquí comienzan los items del Pipeline
     stages {
@@ -79,7 +78,7 @@ pipeline {
 		failure {
 			echo 'This will run only if failed'
 			//send notifications about a Pipeline to an email
-			mail (to: yeniferatamayos@ceiba.com.co',
+			mail (to: yeniferatamayo@ceiba.com.co',
 			      subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
 			      body: "Something is wrong with ${env.BUILD_URL}")
 		
