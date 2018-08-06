@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class parqueadero2018Application {
+public class Parqueadero2018Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(parqueadero2018Application.class, args);
+		SpringApplication.run(Parqueadero2018Application.class, args);
 	}
 }
