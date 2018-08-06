@@ -14,7 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class Parqueadero2018ApplicationTests {
 	
 	@Autowired
-	Parqueadero2018Application parqueaderoApplication;
 	
 	@Test
 	public void unitTest()
