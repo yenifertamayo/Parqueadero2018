@@ -1,4 +1,4 @@
-package com.Parqueadero2018;
+package com.parqueadero2018;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Parqueadero2018ApplicationTests {
+public class parqueadero2018ApplicationTests {
 
 	@Test
 	public void contextLoads() {
