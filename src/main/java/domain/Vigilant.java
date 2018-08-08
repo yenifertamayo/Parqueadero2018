@@ -13,7 +13,7 @@ public class Vigilant {
 		this.iVehicleRepository = iVehicleRepository;
 	}
 
-	public void VehicleRegistry(Vehicle vehicle) {
+	public void vehicleRegistry(Vehicle vehicle) {
 		iVehicleRepository.vehicleRegistry(vehicle);
 	}
 

@@ -25,7 +25,7 @@ public class UnitTest {
 	public void CarRegistryTest()
 	{
 		Vehicle vehicle = new Car("ASD123");
-		vigilant.VehicleRegistry(vehicle);
+		vigilant.vehicleRegistry(vehicle);
 		assertEquals(vehicle.plate, "ASD123");
 	}
 
@@ -33,7 +33,7 @@ public class UnitTest {
 	public void MotorcycleRegistryTest()
 	{
 		Vehicle vehicle = new Motorcycle("ASD12B", 125);
-		vigilant.VehicleRegistry(vehicle);
+		vigilant.vehicleRegistry(vehicle);
 		assertEquals(vehicle.plate, "ASD12B");
 	}
 }
