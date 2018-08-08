@@ -5,7 +5,6 @@ import model.Vehicle;
 
 public class Vigilant {
 	
-	@SuppressWarnings("unused")
 	private IVehicleRepository iVehicleRepository;
 	
 	public Vigilant(IVehicleRepository iVehicleRepository) {
