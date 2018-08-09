@@ -6,7 +6,7 @@ import model.Vehicle;
 
 public class VehicleBuilder {
 
-	public static VehicleEntity ConvertToEntity(Vehicle vehicle) {
+	public static VehicleEntity convertToEntity(Vehicle vehicle) {
 		VehicleEntity vehicleEntity = new VehicleEntity();
 
 		if (vehicle instanceof Motorcycle) {

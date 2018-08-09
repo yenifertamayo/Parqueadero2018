@@ -21,7 +21,7 @@ public class VehicleDaoRepository implements IVehicleRepository{
 	@Override
 	public void vehicleRegistry(Vehicle vehicle) {
 		
-		VehicleEntity vehicleEntity = VehicleBuilder.ConvertToEntity(vehicle);
+		VehicleEntity vehicleEntity = VehicleBuilder.convertToEntity(vehicle);
 		entityManager.persist(vehicleEntity);
 	}
 

@@ -22,7 +22,7 @@ public class UnitTest {
 	Vigilant vigilant;
 	
 	@Test
-	public void CarRegistryTest()
+	public void carRegistryTest()
 	{
 		Vehicle vehicle = new Car("ASD123");
 		vigilant.vehicleRegistry(vehicle);
@@ -30,7 +30,7 @@ public class UnitTest {
 	}
 
 	@Test
-	public void MotorcycleRegistryTest()
+	public void motorcycleRegistryTest()
 	{
 		Vehicle vehicle = new Motorcycle("ASD12B", 125);
 		vigilant.vehicleRegistry(vehicle);
