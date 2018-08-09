@@ -10,20 +10,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 import domain.Vigilant;
 import model.Car;
+import model.Motorcycle;
 
 @RestController
 @Transactional
-@RequestMapping(value = "/parqueadero")
+@RequestMapping(value = "/parking")
 public class Parqueadero2018Rest {
 
 	@Autowired
 	Vigilant vigilant;
 	
-	@RequestMapping(value = "/registro/carro", method = RequestMethod.POST)
+	@RequestMapping(value = "/registry/car", method = RequestMethod.POST)
 	@ResponseBody
 	public void carRegistry(@RequestBody Car car)
 	{
 		vigilant.vehicleRegistry(car);
 	}
 	
+	
+	@RequestMapping(value = "/registry/motorcycle", method = RequestMethod.POST)
+	@ResponseBody
+	public void carRegistry(@RequestBody Motorcycle motorcycle)
+	{
+		vigilant.vehicleRegistry(motorcycle);
+	}
 }

@@ -4,6 +4,9 @@ public class Motorcycle extends Vehicle{
 
 	public int displacement;
 	
+	public Motorcycle() {
+	}
+	
 	public Motorcycle(String plate, int displacement) 
 	{
 		super(plate);

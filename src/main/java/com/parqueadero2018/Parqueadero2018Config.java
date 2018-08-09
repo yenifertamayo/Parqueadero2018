@@ -8,6 +8,7 @@ import org.springframework.web.filter.CorsFilter;
 
 import domain.Vigilant;
 import domain.repository.IVehicleRepository;
+import model.Parking;
 
 @Configuration
 public class Parqueadero2018Config {
@@ -17,6 +18,24 @@ public class Parqueadero2018Config {
 	{
 		return new Vigilant(iVehicleRepository);
 		
+	}
+	
+	@Bean
+	public Parking createParking()
+	{	
+		int maxCars = 20;
+		int maxMotorcycles = 10;
+		int maxDisplacementMotorcycle = 500;
+		double surplusMotorcycle = 2000;
+		double valueHourCar = 1000;
+		double valueDayCar = 8000;
+		double valueHourMotorcycle = 500;
+		double valueDayMotorcycle = 4000;
+		Parking parking = new Parking(
+				maxCars, maxMotorcycles, maxDisplacementMotorcycle, surplusMotorcycle,
+				valueHourCar, valueDayCar, valueHourMotorcycle, valueDayMotorcycle);
+		
+		return parking;
 	}
 	
 	@Bean

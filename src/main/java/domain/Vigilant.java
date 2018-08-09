@@ -13,7 +13,15 @@ public class Vigilant {
 	}
 
 	public void vehicleRegistry(Vehicle vehicle) {
+		
+		validateIngressRules();
+		
 		iVehicleRepository.vehicleRegistry(vehicle);
+	}
+
+	private void validateIngressRules() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
