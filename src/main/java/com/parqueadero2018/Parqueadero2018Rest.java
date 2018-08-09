@@ -21,7 +21,7 @@ public class Parqueadero2018Rest {
 	
 	@RequestMapping(value = "/registro/carro", method = RequestMethod.POST)
 	@ResponseBody
-	public void CarRegistry(@RequestBody Car car)
+	public void carRegistry(@RequestBody Car car)
 	{
 		vigilant.vehicleRegistry(car);
 	}
