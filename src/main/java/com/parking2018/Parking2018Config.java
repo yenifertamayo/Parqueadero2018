@@ -1,4 +1,4 @@
-package com.parqueadero2018;
+package com.parking2018;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import domain.rules.WorkshopCapacity;
 import model.Parking;
 
 @Configuration
-public class Parqueadero2018Config {
+public class Parking2018Config {
 	
 	@Bean
 	public Vigilant createVigilant(IVehicleRepository iVehicleRepository, Parking parking)

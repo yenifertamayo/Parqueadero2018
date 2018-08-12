@@ -1,4 +1,4 @@
-package com.parqueadero2018;
+package com.parking2018;
 
 import java.util.Calendar;
 
@@ -17,7 +17,7 @@ import model.Motorcycle;
 @RestController
 @Transactional
 @RequestMapping(value = "/parking")
-public class Parqueadero2018Rest {
+public class Parking2018Rest {
 
 	@Autowired
 	Vigilant vigilant;

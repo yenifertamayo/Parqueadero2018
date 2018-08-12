@@ -1,4 +1,4 @@
-package com.parqueadero2018;
+package com.parking2018;
 
 import static org.junit.Assert.assertEquals;
 
