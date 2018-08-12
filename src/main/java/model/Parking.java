@@ -23,5 +23,39 @@ public class Parking {
 		this.valueHourMotorcycle = valueHourMotorcycle;
 		this.valueDayMotorcycle = valueDayMotorcycle;
 	}
-	
+
+	public int getMaxCars() {
+		return maxCars;
+	}
+
+	public int getMaxMotorcycles() {
+		return maxMotorcycles;
+	}
+
+	public int getMaxDisplacementMotorcycle() {
+		return maxDisplacementMotorcycle;
+	}
+
+	public double getSurplusMotorcycle() {
+		return surplusMotorcycle;
+	}
+
+	public double getValueHourCar() {
+		return valueHourCar;
+	}
+
+	public double getValueDayCar() {
+		return valueDayCar;
+	}
+
+
+	public double getValueHourMotorcycle() {
+		return valueHourMotorcycle;
+	}
+
+
+	public double getValueDayMotorcycle() {
+		return valueDayMotorcycle;
+	}
+		
 }

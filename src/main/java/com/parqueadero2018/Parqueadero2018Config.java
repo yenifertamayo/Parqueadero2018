@@ -1,5 +1,8 @@
 package com.parqueadero2018;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -8,18 +11,27 @@ import org.springframework.web.filter.CorsFilter;
 
 import domain.Vigilant;
 import domain.repository.IVehicleRepository;
+import domain.rules.IIngressRules;
+import domain.rules.WorkshopCapacity;
 import model.Parking;
 
 @Configuration
 public class Parqueadero2018Config {
 	
 	@Bean
-	public Vigilant createVigilant(IVehicleRepository iVehicleRepository)
+	public Vigilant createVigilant(IVehicleRepository iVehicleRepository, Parking parking)
 	{
-		return new Vigilant(iVehicleRepository);
-		
+		return new Vigilant(iVehicleRepository, addIngressRules(parking), createParking());
 	}
 	
+	private List<IIngressRules> addIngressRules(Parking parking) 
+	{
+		List<IIngressRules> listIngressRules = new ArrayList<>();
+		listIngressRules.add(new WorkshopCapacity(parking));
+		
+		return listIngressRules;
+	}
+
 	@Bean
 	public Parking createParking()
 	{	

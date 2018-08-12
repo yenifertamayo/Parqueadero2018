@@ -1,6 +1,10 @@
 package domain.rules;
 
-public interface IIngressRules {
+import java.util.Calendar;
 
-	public void isPosibleIngress();
+import model.Vehicle;
+
+public interface IIngressRules {
+	
+	public boolean isPossibleIngress(Vehicle vehicle, Calendar ingressDate);
 }

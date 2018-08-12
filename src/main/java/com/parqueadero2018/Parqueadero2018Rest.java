@@ -1,5 +1,7 @@
 package com.parqueadero2018;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,16 +24,18 @@ public class Parqueadero2018Rest {
 	
 	@RequestMapping(value = "/registry/car", method = RequestMethod.POST)
 	@ResponseBody
-	public void carRegistry(@RequestBody Car car)
+	public void carRegistry(@RequestBody Car car) throws Exception
 	{
-		vigilant.vehicleRegistry(car);
+		Calendar ingressDate =  Calendar.getInstance();
+		vigilant.vehicleRegistry(car, ingressDate);
 	}
 	
 	
 	@RequestMapping(value = "/registry/motorcycle", method = RequestMethod.POST)
 	@ResponseBody
-	public void carRegistry(@RequestBody Motorcycle motorcycle)
+	public void carRegistry(@RequestBody Motorcycle motorcycle) throws Exception
 	{
-		vigilant.vehicleRegistry(motorcycle);
+		Calendar ingressDate =  Calendar.getInstance();
+		vigilant.vehicleRegistry(motorcycle, ingressDate);
 	}
 }
