@@ -6,5 +6,5 @@ import model.Vehicle;
 
 public interface IIngressRules 
 {
-	public boolean isPossibleIngress(Vehicle vehicle, Calendar ingressDate);
+	public boolean validateRule(Vehicle vehicle, Calendar ingressDate);
 }

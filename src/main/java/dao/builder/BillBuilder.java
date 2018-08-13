@@ -2,6 +2,7 @@ package dao.builder;
 
 import dao.entity.BillEntity;
 import model.Bill;
+import model.Vehicle;
 
 public class BillBuilder 
 {
@@ -13,6 +14,19 @@ public class BillBuilder
 		billEntity.setValueToPay(bill.getValueToPay());
 		
 		return billEntity;
+	}
+
+	public static Bill convertToDto(BillEntity billEntity) {
+		
+		Vehicle vehicle = VehicleBuilder.convertToDto(billEntity.getVehicle());
+		
+		Bill bill = new Bill();
+		bill.setIngressDate(billEntity.getIngressDate());
+		bill.setExitDate(billEntity.getExitDate());
+		bill.setValueToPay(billEntity.getValueToPay());
+		bill.setVehicle(vehicle);	
+		
+		return bill;
 	}
 
 }

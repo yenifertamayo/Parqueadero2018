@@ -1,6 +1,7 @@
 package dao.builder;
 
 import dao.entity.VehicleEntity;
+import model.Car;
 import model.Motorcycle;
 import model.Vehicle;
 
@@ -23,6 +24,26 @@ public class VehicleBuilder
 		}
 		
 		return vehicleEntity;
+	}
+
+	public static Vehicle convertToDto(VehicleEntity vehicleEntity) {
+		
+		Vehicle vehicle = null;
+		
+		if(vehicleEntity != null) 
+		{
+			if(vehicleEntity.getType().equals("Moto"))
+			{
+				vehicle = new Motorcycle(vehicleEntity.getPlate(), vehicleEntity.getDisplacement());
+			}
+			
+			else 
+			{
+				vehicle = new Car(vehicleEntity.getPlate());
+			}
+		}
+		
+		return vehicle;
 	}
 
 }

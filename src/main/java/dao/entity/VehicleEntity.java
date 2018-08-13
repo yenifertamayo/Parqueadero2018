@@ -9,7 +9,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity(name="Vehicle")
-@NamedQueries({@NamedQuery(name = "Vehicle.getByPlate", query= "SELECT vehicle FROM Vehicle vehicle WHERE vehicle.plate = :plate")})
+@NamedQueries({@NamedQuery(name = "Vehicle.findByPlate", query= "SELECT vehicle FROM Vehicle vehicle WHERE vehicle.plate = :plate")})
 
 public class VehicleEntity 
 {

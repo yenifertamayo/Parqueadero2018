@@ -8,35 +8,28 @@ import model.Car;
 import model.Parking;
 import model.Vehicle;
 
-public class WorkshopCapacity implements IIngressRules
-{
+public class WorkshopCapacity implements IIngressRules {
 	@Autowired
 	public Parking parking;
-	
-	public WorkshopCapacity(Parking parking) 
-	{
+
+	public WorkshopCapacity(Parking parking) {
 		this.parking = parking;
 	}
 
 	@Override
-	public boolean isPossibleIngress(Vehicle vehicle, Calendar ingressDate) 
-	{
-		if(vehicle instanceof Car)
-		{
+	public boolean validateRule(Vehicle vehicle, Calendar ingressDate) {
+		if (vehicle instanceof Car) {
 			return validateCapacityCar();
 		}
-		
+
 		return validateCapacityMotorcycle();
 	}
 
-	private boolean validateCapacityCar() 
-	{
+	private boolean validateCapacityCar() {
 		return true;
 	}
 
-
-	private boolean validateCapacityMotorcycle() 
-	{
+	private boolean validateCapacityMotorcycle() {
 		return true;
 	}
 

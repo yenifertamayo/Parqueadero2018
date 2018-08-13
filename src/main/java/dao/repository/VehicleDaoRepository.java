@@ -14,7 +14,7 @@ import model.Vehicle;
 @Repository
 public class VehicleDaoRepository implements IVehicleRepository
 {
-	private static final String VEHICLE_BY_PLATE = "Vehicle.getByPlate";
+	private static final String VEHICLE_BY_PLATE = "Vehicle.findByPlate";
 	private static final String PLATE = "plate";
 	private EntityManager entityManager;
 

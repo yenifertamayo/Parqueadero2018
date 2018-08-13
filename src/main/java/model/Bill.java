@@ -17,8 +17,15 @@ public class Bill
 		this.valueToPay = valueToPay;
 	}
 
+	public Bill() {
+	}
+
 	public Calendar getIngressDate() {
 		return ingressDate;
+	}
+
+	public void setIngressDate(Calendar ingressDate) {
+		this.ingressDate = ingressDate;
 	}
 
 	public Calendar getExitDate() {
@@ -31,6 +38,10 @@ public class Bill
 
 	public Vehicle getVehicle() {
 		return vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
 	}
 
 	public double getValueToPay() {
