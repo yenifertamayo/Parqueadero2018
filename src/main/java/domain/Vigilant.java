@@ -6,7 +6,6 @@ import java.util.List;
 import domain.repository.IBillRepository;
 import domain.repository.IVehicleRepository;
 import domain.rules.IIngressRules;
-import exception.ParkingException;
 import model.Bill;
 import model.Parking;
 import model.Vehicle;

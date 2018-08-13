@@ -24,7 +24,7 @@ public class Parking2018Rest
 	
 	@RequestMapping(value = "/registry/car", method = RequestMethod.POST)
 	@ResponseBody
-	public void carRegistry(@RequestBody Car car) throws Exception
+	public void carRegistry(@RequestBody Car car)
 	{
 		Calendar ingressDate =  Calendar.getInstance();
 		vigilant.vehicleRegistry(car, ingressDate);
@@ -32,7 +32,7 @@ public class Parking2018Rest
 	
 	@RequestMapping(value = "/registry/motorcycle", method = RequestMethod.POST)
 	@ResponseBody
-	public void carRegistry(@RequestBody Motorcycle motorcycle) throws Exception
+	public void carRegistry(@RequestBody Motorcycle motorcycle)
 	{
 		Calendar ingressDate =  Calendar.getInstance();
 		vigilant.vehicleRegistry(motorcycle, ingressDate);

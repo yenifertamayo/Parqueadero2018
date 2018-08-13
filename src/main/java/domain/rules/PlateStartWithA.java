@@ -14,10 +14,10 @@ public class PlateStartWithA implements IIngressRules
 	{
 		this.vehicle = vehicle;
 		this.ingressDate = ingressDate;
-		return ValidatePlate();
+		return validatePlate();
 	}
 
-	private boolean ValidatePlate() 
+	private boolean validatePlate() 
 	{
 		if(vehicle.getPlate().startsWith("A"))
 		{
