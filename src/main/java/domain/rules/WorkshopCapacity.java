@@ -8,8 +8,8 @@ import model.Car;
 import model.Parking;
 import model.Vehicle;
 
-public class WorkshopCapacity implements IIngressRules{
-
+public class WorkshopCapacity implements IIngressRules
+{
 	@Autowired
 	public Parking parking;
 	

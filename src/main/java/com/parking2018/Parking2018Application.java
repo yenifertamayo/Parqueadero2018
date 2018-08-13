@@ -10,7 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 @EntityScan("dao.entity")
 public class Parking2018Application 
 {
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		SpringApplication.run(Parking2018Application.class, args);
 	}
 	

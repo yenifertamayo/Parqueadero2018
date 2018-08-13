@@ -27,14 +27,14 @@ public class PlateStartWithA implements IIngressRules
 		return true;
 	}
 
-	private boolean validateDate() {
-		
-		if((ingressDate.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) ||
+	private boolean validateDate() 
+	{
+		if((ingressDate.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) ||
 			ingressDate.get(Calendar.DAY_OF_WEEK)== Calendar.SUNDAY)
 		{
 			return true;
 		}
-		
+
 		throw new ParkingException("No autorizado. No es un día habil para su ingreso.");
 	}
 

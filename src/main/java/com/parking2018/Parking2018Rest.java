@@ -17,8 +17,8 @@ import model.Motorcycle;
 @RestController
 @Transactional
 @RequestMapping(value = "/parking")
-public class Parking2018Rest {
-
+public class Parking2018Rest 
+{
 	@Autowired
 	Vigilant vigilant;
 	
@@ -29,7 +29,6 @@ public class Parking2018Rest {
 		Calendar ingressDate =  Calendar.getInstance();
 		vigilant.vehicleRegistry(car, ingressDate);
 	}
-	
 	
 	@RequestMapping(value = "/registry/motorcycle", method = RequestMethod.POST)
 	@ResponseBody

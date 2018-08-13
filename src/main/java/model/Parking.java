@@ -1,7 +1,7 @@
 package model;
 
-public class Parking {
-	
+public class Parking 
+{
 	public int maxCars;
 	public int maxMotorcycles;
 	public int maxDisplacementMotorcycle;
@@ -12,7 +12,8 @@ public class Parking {
 	public double valueDayMotorcycle;
 	
 	public Parking(int maxCars, int maxMotorcycles, int maxDisplacementMotorcycle, double surplusMotorcycle,
-			double valueHourCar, double valueDayCar, double valueHourMotorcycle, double valueDayMotorcycle) {
+			double valueHourCar, double valueDayCar, double valueHourMotorcycle, double valueDayMotorcycle) 
+	{
 		super();
 		this.maxCars = maxCars;
 		this.maxMotorcycles = maxMotorcycles;

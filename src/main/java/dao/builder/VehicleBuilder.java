@@ -4,9 +4,10 @@ import dao.entity.VehicleEntity;
 import model.Motorcycle;
 import model.Vehicle;
 
-public class VehicleBuilder {
-
-	public static VehicleEntity convertToEntity(Vehicle vehicle) {
+public class VehicleBuilder 
+{
+	public static VehicleEntity convertToEntity(Vehicle vehicle) 
+	{
 		VehicleEntity vehicleEntity = new VehicleEntity();
 
 		if (vehicle instanceof Motorcycle) {

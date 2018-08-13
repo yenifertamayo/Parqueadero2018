@@ -10,18 +10,19 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import domain.Vigilant;
+import domain.repository.IBillRepository;
 import domain.repository.IVehicleRepository;
 import domain.rules.IIngressRules;
 import domain.rules.WorkshopCapacity;
 import model.Parking;
 
 @Configuration
-public class Parking2018Config {
-	
+public class Parking2018Config 
+{
 	@Bean
-	public Vigilant createVigilant(IVehicleRepository iVehicleRepository, Parking parking)
+	public Vigilant createVigilant(IVehicleRepository iVehicleRepository, IBillRepository iBillRepository, Parking parking)
 	{
-		return new Vigilant(iVehicleRepository, addIngressRules(parking), createParking());
+		return new Vigilant(iVehicleRepository, iBillRepository, addIngressRules(parking), createParking());
 	}
 	
 	private List<IIngressRules> addIngressRules(Parking parking) 
@@ -51,7 +52,8 @@ public class Parking2018Config {
 	}
 	
 	@Bean
-    public CorsFilter corsFilter() {
+    public CorsFilter corsFilter() 
+	{
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
