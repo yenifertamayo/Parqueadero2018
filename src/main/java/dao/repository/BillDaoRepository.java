@@ -28,7 +28,7 @@ public class BillDaoRepository implements IBillRepository {
 	public void addBill(Bill bill) {
 		BillEntity billEntity = BillBuilder.convertToEntity(bill);
 		VehicleDaoRepository vehicleDaoRepository = new VehicleDaoRepository(entityManager);
-		VehicleEntity vehicleEntity = vehicleDaoRepository.obtenerVehicleEntity(bill.getVehicle().getPlate());
+		VehicleEntity vehicleEntity = vehicleDaoRepository.getVehicleEntity(bill.getVehicle().getPlate());
 		billEntity.setVehicleEntity(vehicleEntity);
 		entityManager.persist(billEntity);
 	}

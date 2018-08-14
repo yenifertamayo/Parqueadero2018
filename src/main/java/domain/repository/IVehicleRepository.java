@@ -6,4 +6,6 @@ public interface IVehicleRepository
 {
 	public void vehicleRegistry(Vehicle vehicle);
 
+	public Vehicle getVehicleByPate(String plate);
+
 }

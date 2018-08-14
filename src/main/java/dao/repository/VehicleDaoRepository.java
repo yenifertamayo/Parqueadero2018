@@ -31,7 +31,7 @@ public class VehicleDaoRepository implements IVehicleRepository
 	}
 
 	@SuppressWarnings("rawtypes")
-	public VehicleEntity obtenerVehicleEntity(String plate) {
+	public VehicleEntity getVehicleEntity(String plate) {
 
 		Query query = entityManager.createNamedQuery(VEHICLE_BY_PLATE);
 		query.setParameter(PLATE, plate);
@@ -39,6 +39,13 @@ public class VehicleDaoRepository implements IVehicleRepository
 		List resultList = query.getResultList();
 		return !(resultList).isEmpty() ? (VehicleEntity) resultList.get(0): null;
 		
+	}
+
+	@Override
+	public Vehicle getVehicleByPate(String plate) {
+		
+		VehicleEntity vehicleEntity = getVehicleEntity(plate);
+		return VehicleBuilder.convertToDto(vehicleEntity);
 	}
 
 }

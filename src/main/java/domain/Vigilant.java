@@ -28,23 +28,31 @@ public class Vigilant {
 
 	public Bill vehicleRegistry(Vehicle vehicle, Calendar ingressDate) {
 
-		if (isPossibleIngress(vehicle, ingressDate)) {
+		isPossibleIngress(vehicle, ingressDate);
+		
+		if(validateVehicleRegistred(vehicle.plate)) {
+			
 			iVehicleRepository.vehicleRegistry(vehicle);
-			Bill bill = new Bill(ingressDate, null, vehicle, 0);
-			iBillRepository.addBill(bill);
-			return bill;
 		}
-
-		return null;
+		
+		Bill bill = new Bill(ingressDate, null, vehicle, 0);
+		iBillRepository.addBill(bill);
+		return bill;
 	}
 
-	private boolean isPossibleIngress(Vehicle vehicle, Calendar ingressDate) {
+	private boolean validateVehicleRegistred(String plate) {
+		Vehicle vehicle = iVehicleRepository.getVehicleByPate(plate);
+		return vehicle == null;
+	}
+
+	
+	private void isPossibleIngress(Vehicle vehicle, Calendar ingressDate) {
 
 		if (validateIsParked(vehicle.getPlate())) {
 			throw new ParkingException("El vehiculo ya esta en el parqueadero");
 		}
-		
-		return validateIngressRules(vehicle, ingressDate);
+
+		validateIngressRules(vehicle, ingressDate);
 	}
 
 	private boolean validateIsParked(String plate) {
@@ -53,14 +61,13 @@ public class Vigilant {
 		return vehicleParked != null;
 	}
 
-	private boolean validateIngressRules(Vehicle vehicle, Calendar ingressDate) {
+	private void validateIngressRules(Vehicle vehicle, Calendar ingressDate) {
 		for (IIngressRules rules : iIngressRules) {
 			if (rules.validateRule(vehicle, ingressDate)) {
 				continue;
 			}
 		}
 
-		return true;
 	}
 
 }
