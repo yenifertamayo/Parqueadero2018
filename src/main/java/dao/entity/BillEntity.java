@@ -12,7 +12,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity(name="Bill")
-@NamedQueries({@NamedQuery(name = "Bill.findByPlate", query= "SELECT bill FROM Bill bill WHERE bill.vehicleEntity.plate = :plate AND bill.exitDate is null")})
+@NamedQueries({@NamedQuery(name = "Bill.findByPlate", query= "SELECT bill FROM Bill bill WHERE bill.vehicleEntity.plate = :plate AND bill.exitDate is null"),
+@NamedQuery(name = "Bill.countAllBill", query = "SELECT COUNT(*) from Bill bill where bill.vehicleEntity.type =:type AND bill.exitDate is null")})
 
 public class BillEntity 
 {

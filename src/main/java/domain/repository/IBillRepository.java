@@ -9,4 +9,6 @@ public interface IBillRepository
 
 	public Vehicle getVehicleBillByPlate(String plate);
 
+	public Long getNumberOfVehicles(Vehicle vehicle);
+
 }

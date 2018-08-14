@@ -8,6 +8,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 import dao.builder.BillBuilder;
+import dao.builder.VehicleBuilder;
 import dao.entity.BillEntity;
 import dao.entity.VehicleEntity;
 import domain.repository.IBillRepository;
@@ -18,6 +19,8 @@ import model.Vehicle;
 public class BillDaoRepository implements IBillRepository {
 	private static final String BILL_BY_PLATE = "Bill.findByPlate";
 	private static final String PLATE = "plate";
+	private static final String NUMBER_OF_VEHICLES = "Bill.countAllBill";
+	private static final String TYPE = "type";
 	private EntityManager entityManager;
 
 	public BillDaoRepository(EntityManager entityManager) {
@@ -55,6 +58,16 @@ public class BillDaoRepository implements IBillRepository {
 		
 		List resultList = query.getResultList();
 		return !(resultList).isEmpty() ? (BillEntity) resultList.get(0) : null;
+	}
+
+	@Override
+	public Long getNumberOfVehicles(Vehicle vehicle) {
+		
+		VehicleEntity vehicleEntity = VehicleBuilder.convertToEntity(vehicle);
+		Query query = entityManager.createNamedQuery(NUMBER_OF_VEHICLES);
+		query.setParameter(TYPE, vehicleEntity.getType());
+		
+		return (Long) query.getSingleResult();
 	}
 
 }

@@ -23,13 +23,13 @@ public class Parking2018Config {
 	@Bean
 	public Vigilant createVigilant(IVehicleRepository iVehicleRepository, IBillRepository iBillRepository,
 			Parking parking) {
-		return new Vigilant(iVehicleRepository, iBillRepository, addIngressRules(parking), createParking());
+		return new Vigilant(iVehicleRepository, iBillRepository, addIngressRules(iBillRepository, parking), createParking());
 	}
 
-	private List<IIngressRules> addIngressRules(Parking parking) {
+	private List<IIngressRules> addIngressRules(IBillRepository iBillRepository, Parking parking) {
 		List<IIngressRules> listIngressRules = new ArrayList<>();
 		listIngressRules.add(new PlateStartWithA());
-		listIngressRules.add(new WorkshopCapacity(parking));
+		listIngressRules.add(new WorkshopCapacity(iBillRepository, parking));
 
 		return listIngressRules;
 	}
