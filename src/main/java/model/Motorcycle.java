@@ -2,7 +2,7 @@ package model;
 
 public class Motorcycle extends Vehicle
 {
-	public int displacement;
+	int displacement;
 	
 	public Motorcycle() {
 	}

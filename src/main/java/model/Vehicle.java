@@ -2,7 +2,7 @@ package model;
 
 public class Vehicle 
 {	
-	public String plate;
+	String plate;
 	
 	public Vehicle() 
 	{

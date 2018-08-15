@@ -1,16 +1,21 @@
 package domain.repository;
 
+import java.util.List;
+
 import model.Bill;
+import model.ParkedVehicle;
 import model.Vehicle;
 
 public interface IBillRepository 
 {
-	public void addBill(Bill bill);
+	void addBill(Bill bill);
 
-	public Long getNumberOfVehicles(Vehicle vehicle);
+	Long getNumberOfVehicles(Vehicle vehicle);
 
-	public void updateBill(Bill bill);
+	void updateBill(Bill bill);
 	
 	Bill getBillByPlate(String plate);
+
+	List<ParkedVehicle> getListParked();
 
 }

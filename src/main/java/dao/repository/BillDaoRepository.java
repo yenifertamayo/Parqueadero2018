@@ -1,5 +1,6 @@
 package dao.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,6 +14,8 @@ import dao.entity.BillEntity;
 import dao.entity.VehicleEntity;
 import domain.repository.IBillRepository;
 import model.Bill;
+import model.ParkedVehicle;
+import model.Motorcycle;
 import model.Vehicle;
 
 @Repository
@@ -21,6 +24,7 @@ public class BillDaoRepository implements IBillRepository {
 	private static final String PLATE = "plate";
 	private static final String NUMBER_OF_VEHICLES = "Bill.countAllBill";
 	private static final String TYPE = "type";
+	private static final String ALL_PARKED = "Bill.findAllParked";
 	private EntityManager entityManager;
 
 	public BillDaoRepository(EntityManager entityManager) {
@@ -77,9 +81,55 @@ public class BillDaoRepository implements IBillRepository {
 	@Override
 	public void updateBill(Bill bill) {
 		BillEntity billEntity = getBillEntityByPlate(bill.getVehicle().getPlate());
-		billEntity.setExitDate(bill.getExitDate());
-		billEntity.setValueToPay(bill.getValueToPay());
+		if (billEntity != null) {
 		
+			billEntity.setExitDate(bill.getExitDate());
+			billEntity.setValueToPay(bill.getValueToPay());
+		}
+		
+	}
+
+	@Override
+	public List<ParkedVehicle> getListParked() {
+		
+		List<BillEntity> billEntityList = getBillEntityList();
+		List<ParkedVehicle> parkedList = new ArrayList<>();
+		
+		if (billEntityList != null) {
+			
+			ParkedVehicle parkedVehicle;
+			
+			for (int i = 0; i < billEntityList.size(); i++) {
+				
+				Bill bill = BillBuilder.convertToDto(billEntityList.get(i));
+				String vehicleType = validateVehicleType(bill.getVehicle());
+				parkedVehicle = new ParkedVehicle(bill.getVehicle().getPlate(), vehicleType,
+										bill.getIngressDate());
+				parkedList.add(parkedVehicle);				
+			}
+			
+		}
+		
+		return parkedList;
+	}
+
+	@SuppressWarnings("unchecked")
+	private List<BillEntity> getBillEntityList() {
+
+		Query query = entityManager.createNamedQuery(ALL_PARKED);
+		List<BillEntity> resultList = query.getResultList();
+		
+		return !(resultList).isEmpty() ? resultList : null;
+	}
+	
+	private String validateVehicleType(Vehicle vehicle) {
+
+		if (vehicle instanceof Motorcycle) {
+			
+			return "Moto";
+		}
+
+		return "Carro";
 	}
 
 }

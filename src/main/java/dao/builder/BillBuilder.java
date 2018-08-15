@@ -6,6 +6,11 @@ import model.Vehicle;
 
 public class BillBuilder 
 {
+	
+	private BillBuilder() {
+
+	}
+
 	public static BillEntity convertToEntity(Bill bill) 
 	{
 		BillEntity billEntity = new BillEntity();

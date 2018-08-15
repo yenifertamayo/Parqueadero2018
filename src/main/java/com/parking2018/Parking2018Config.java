@@ -3,7 +3,6 @@ package com.parking2018;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.service.spi.Startable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -28,7 +27,7 @@ public class Parking2018Config {
 	public Vigilant createVigilant(IVehicleRepository iVehicleRepository, IBillRepository iBillRepository,
 			Parking parking) {
 		return new Vigilant(iVehicleRepository, iBillRepository, addIngressRules(iBillRepository, parking),
-							addExitRules(iBillRepository, parking) ,createParking());
+							addExitRules(parking) ,createParking());
 	}
 
 	private List<IIngressRules> addIngressRules(IBillRepository iBillRepository, Parking parking) {
@@ -39,7 +38,7 @@ public class Parking2018Config {
 		return listIngressRules;
 	}
 	
-	private List<IExitRules> addExitRules(IBillRepository iBillRepository, Parking parking) {
+	private List<IExitRules> addExitRules(Parking parking) {
 
 		List<IExitRules> listExitRules = new ArrayList<>();
 		listExitRules.add(new MotorcycleDisplacement(parking));
@@ -57,10 +56,9 @@ public class Parking2018Config {
 		double valueDayCar = 8000;
 		double valueHourMotorcycle = 500;
 		double valueDayMotorcycle = 4000;
-		Parking parking = new Parking(maxCars, maxMotorcycles, maxDisplacementMotorcycle, surplusMotorcycle,
+		return new Parking(maxCars, maxMotorcycles, maxDisplacementMotorcycle, surplusMotorcycle,
 				valueHourCar, valueDayCar, valueHourMotorcycle, valueDayMotorcycle);
 
-		return parking;
 	}
 
 	@Bean

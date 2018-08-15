@@ -9,6 +9,7 @@ import domain.rules.IExitRules;
 import domain.rules.IIngressRules;
 import exception.ParkingException;
 import model.Bill;
+import model.ParkedVehicle;
 import model.Parking;
 import model.Vehicle;
 
@@ -34,7 +35,7 @@ public class Vigilant {
 
 		isPossibleIngress(vehicle, ingressDate);
 
-		if (validateVehicleRegistred(vehicle.plate)) {
+		if (validateVehicleRegistred(vehicle.getPlate())) {
 
 			iVehicleRepository.vehicleRegistry(vehicle);
 		}
@@ -96,6 +97,11 @@ public class Vigilant {
 			exitRule.valueToPay(bill);
 		}
 		
+	}
+	
+	public List<ParkedVehicle> getListParked() {
+		
+		return iBillRepository.getListParked();
 	}
 
 }

@@ -17,8 +17,7 @@ public class IntegrationTest {
 	@Test
 	public void unitTest()
 	{
-		int suma = 8 + 8;
-		assertEquals(suma, 16);
+
 	}
 	
 }

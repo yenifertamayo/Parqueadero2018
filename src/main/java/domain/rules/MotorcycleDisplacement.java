@@ -2,11 +2,9 @@ package domain.rules;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import domain.repository.IBillRepository;
 import model.Bill;
 import model.Motorcycle;
 import model.Parking;
-import model.Vehicle;
 
 public class MotorcycleDisplacement implements IExitRules{
 

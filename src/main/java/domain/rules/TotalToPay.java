@@ -73,7 +73,7 @@ public class TotalToPay implements IExitRules{
 
 	private double calculateCarValueToPay(Bill bill, double hoursNumber, double daysNumber) {
 
-		double totalToPay = hoursNumber*parking.valueHourCar + daysNumber*parking.valueDayCar;
+		double totalToPay = hoursNumber*parking.getValueHourCar()+ daysNumber*parking.getValueDayCar();
 		
 		bill.setValueToPay(totalToPay + bill.getValueToPay());
 		return bill.getValueToPay();
@@ -81,7 +81,7 @@ public class TotalToPay implements IExitRules{
 	
 	private double calculateMotorcycleValueToPay(Bill bill, double hoursNumber, double daysNumber) {
 
-		double totalToPay = hoursNumber*parking.valueHourMotorcycle + daysNumber*parking.valueDayMotorcycle;
+		double totalToPay = hoursNumber*parking.getValueHourMotorcycle() + daysNumber*parking.getValueDayMotorcycle();
 
 		bill.setValueToPay(totalToPay + bill.getValueToPay());
 		return bill.getValueToPay();

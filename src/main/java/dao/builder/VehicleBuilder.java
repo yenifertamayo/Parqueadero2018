@@ -7,6 +7,12 @@ import model.Vehicle;
 
 public class VehicleBuilder 
 {
+	
+	
+	private VehicleBuilder() {
+		
+	}
+
 	public static VehicleEntity convertToEntity(Vehicle vehicle) 
 	{
 		VehicleEntity vehicleEntity = new VehicleEntity();

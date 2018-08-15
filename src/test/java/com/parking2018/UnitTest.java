@@ -29,7 +29,7 @@ public class UnitTest {
 	{
 		Vehicle vehicle = new Car("SSD123");
 		vigilant.vehicleRegistry(vehicle, Calendar.getInstance());
-		assertEquals(vehicle.plate, "SSD123");
+		assertEquals("SSD123", vehicle.getPlate());
 	}
 
 	@Test
@@ -37,6 +37,6 @@ public class UnitTest {
 	{
 		Vehicle vehicle = new Motorcycle("SSD12B", 125);
 		vigilant.vehicleRegistry(vehicle, Calendar.getInstance());
-		assertEquals(vehicle.plate, "SSD12B");
+		assertEquals("SSD12B", vehicle.getPlate());
 	}
 }

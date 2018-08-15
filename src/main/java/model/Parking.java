@@ -2,14 +2,14 @@ package model;
 
 public class Parking 
 {
-	public int maxCars;
-	public int maxMotorcycles;
-	public int maxDisplacementMotorcycle;
-	public double surplusMotorcycle;
-	public double valueHourCar;
-	public double valueDayCar;
-	public double valueHourMotorcycle;
-	public double valueDayMotorcycle;
+	int maxCars;
+	int maxMotorcycles;
+	int maxDisplacementMotorcycle;
+	double surplusMotorcycle;
+	double valueHourCar;
+	double valueDayCar;
+	double valueHourMotorcycle;
+	double valueDayMotorcycle;
 	
 	public Parking(int maxCars, int maxMotorcycles, int maxDisplacementMotorcycle, double surplusMotorcycle,
 			double valueHourCar, double valueDayCar, double valueHourMotorcycle, double valueDayMotorcycle) 

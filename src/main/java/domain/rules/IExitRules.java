@@ -4,5 +4,5 @@ import model.Bill;
 
 public interface IExitRules 
 {
-	public double valueToPay(Bill bill);
+	double valueToPay(Bill bill);
 }

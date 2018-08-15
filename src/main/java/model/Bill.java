@@ -4,10 +4,10 @@ import java.util.Calendar;
 
 public class Bill 
 {
-	public Calendar ingressDate;
-	public Calendar exitDate;
-	public Vehicle vehicle;
-	public double valueToPay;
+	Calendar ingressDate;
+	Calendar exitDate;
+	Vehicle vehicle;
+	double valueToPay;
 	
 	public Bill(Calendar ingressDate, Calendar exitDate, Vehicle vehicle, double valueToPay) {
 		super();
