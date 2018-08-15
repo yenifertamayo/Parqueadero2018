@@ -44,9 +44,6 @@ public class BillDaoRepository implements IBillRepository {
 	@Override
 	public Bill getBillByPlate(String plate) {
 		
-		Query query = entityManager.createNamedQuery(BILL_BY_PLATE);
-		query.setParameter(PLATE, plate);
-		
 		BillEntity billEntity = getBillEntityByPlate(plate);
 		Bill bill = null;
 		

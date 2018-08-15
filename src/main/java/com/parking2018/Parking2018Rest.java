@@ -1,6 +1,7 @@
 package com.parking2018;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,7 @@ import domain.Vigilant;
 import model.Bill;
 import model.Car;
 import model.Motorcycle;
+import model.ParkedVehicle;
 import model.Vehicle;
 
 @RestController
@@ -45,5 +47,13 @@ public class Parking2018Rest
 	public Bill vehicleExit(@RequestBody Vehicle vehicle)
 	{
 		return vigilant.vehicleExit(vehicle.getPlate());
+	}
+	
+	
+	@RequestMapping(value = "/list/parked", method = RequestMethod.GET)
+	@ResponseBody
+	public List<ParkedVehicle> getListParked()
+	{
+		return vigilant.getListParked();
 	}
 }
