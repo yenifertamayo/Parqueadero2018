@@ -8,6 +8,10 @@ import model.Vehicle;
 public final class VehicleBuilder 
 {
 	
+	private VehicleBuilder() {
+		throw new IllegalStateException("Utility class");
+	}
+	
 	public static VehicleEntity convertToEntity(Vehicle vehicle) 
 	{
 		VehicleEntity vehicleEntity = new VehicleEntity();
