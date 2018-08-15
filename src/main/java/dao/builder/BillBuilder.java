@@ -4,13 +4,8 @@ import dao.entity.BillEntity;
 import model.Bill;
 import model.Vehicle;
 
-public class BillBuilder 
+public final class BillBuilder 
 {
-	
-	private BillBuilder() {
-
-	}
-
 	public static BillEntity convertToEntity(Bill bill) 
 	{
 		BillEntity billEntity = new BillEntity();

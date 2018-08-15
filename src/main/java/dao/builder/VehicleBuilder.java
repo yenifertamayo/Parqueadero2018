@@ -5,14 +5,9 @@ import model.Car;
 import model.Motorcycle;
 import model.Vehicle;
 
-public class VehicleBuilder 
+public final class VehicleBuilder 
 {
 	
-	
-	private VehicleBuilder() {
-		
-	}
-
 	public static VehicleEntity convertToEntity(Vehicle vehicle) 
 	{
 		VehicleEntity vehicleEntity = new VehicleEntity();
