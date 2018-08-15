@@ -7,8 +7,10 @@ public interface IBillRepository
 {
 	public void addBill(Bill bill);
 
-	public Vehicle getVehicleBillByPlate(String plate);
-
 	public Long getNumberOfVehicles(Vehicle vehicle);
+
+	public void updateBill(Bill bill);
+	
+	Bill getBillByPlate(String plate);
 
 }

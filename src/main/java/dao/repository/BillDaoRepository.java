@@ -36,29 +36,33 @@ public class BillDaoRepository implements IBillRepository {
 		entityManager.persist(billEntity);
 	}
 
+
 	@Override
-	public Vehicle getVehicleBillByPlate(String plate) {
-
-		Vehicle vehicle = null;
-		BillEntity billEntity = getBillByPlate(plate);
-		if(billEntity != null)
-		{
-			Bill bill = BillBuilder.convertToDto(billEntity);
-			vehicle = bill.getVehicle();
-		}
-		
-		return vehicle;
-	}
-
-	@SuppressWarnings("rawtypes")
-	private BillEntity getBillByPlate(String plate) {
+	public Bill getBillByPlate(String plate) {
 		
 		Query query = entityManager.createNamedQuery(BILL_BY_PLATE);
 		query.setParameter(PLATE, plate);
 		
-		List resultList = query.getResultList();
+		BillEntity billEntity = getBillEntityByPlate(plate);
+		Bill bill = null;
+		
+		if (billEntity != null) {
+			
+			bill = BillBuilder.convertToDto(billEntity);
+		}
+		
+		return bill;
+	}
+	
+	private BillEntity getBillEntityByPlate(String plate) {
+		
+		Query query = entityManager.createNamedQuery(BILL_BY_PLATE);
+		query.setParameter(PLATE, plate);
+		
+		List<?> resultList = query.getResultList();
 		return !(resultList).isEmpty() ? (BillEntity) resultList.get(0) : null;
 	}
+
 
 	@Override
 	public Long getNumberOfVehicles(Vehicle vehicle) {
@@ -68,6 +72,14 @@ public class BillDaoRepository implements IBillRepository {
 		query.setParameter(TYPE, vehicleEntity.getType());
 		
 		return (Long) query.getSingleResult();
+	}
+
+	@Override
+	public void updateBill(Bill bill) {
+		BillEntity billEntity = getBillEntityByPlate(bill.getVehicle().getPlate());
+		billEntity.setExitDate(bill.getExitDate());
+		billEntity.setValueToPay(bill.getValueToPay());
+		
 	}
 
 }

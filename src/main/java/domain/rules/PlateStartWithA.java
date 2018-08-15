@@ -6,6 +6,7 @@ import exception.ParkingException;
 import model.Vehicle;
 
 public class PlateStartWithA implements IIngressRules {
+	
 	private Vehicle vehicle;
 	private Calendar ingressDate;
 

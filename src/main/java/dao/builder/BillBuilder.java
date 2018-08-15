@@ -19,7 +19,6 @@ public class BillBuilder
 	public static Bill convertToDto(BillEntity billEntity) {
 		
 		Vehicle vehicle = VehicleBuilder.convertToDto(billEntity.getVehicle());
-		
 		Bill bill = new Bill();
 		bill.setIngressDate(billEntity.getIngressDate());
 		bill.setExitDate(billEntity.getExitDate());

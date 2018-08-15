@@ -13,8 +13,11 @@ import org.springframework.web.filter.CorsFilter;
 import domain.Vigilant;
 import domain.repository.IBillRepository;
 import domain.repository.IVehicleRepository;
+import domain.rules.IExitRules;
 import domain.rules.IIngressRules;
+import domain.rules.MotorcycleDisplacement;
 import domain.rules.PlateStartWithA;
+import domain.rules.TotalToPay;
 import domain.rules.WorkshopCapacity;
 import model.Parking;
 
@@ -23,7 +26,8 @@ public class Parking2018Config {
 	@Bean
 	public Vigilant createVigilant(IVehicleRepository iVehicleRepository, IBillRepository iBillRepository,
 			Parking parking) {
-		return new Vigilant(iVehicleRepository, iBillRepository, addIngressRules(iBillRepository, parking), createParking());
+		return new Vigilant(iVehicleRepository, iBillRepository, addIngressRules(iBillRepository, parking),
+							addExitRules(iBillRepository, parking) ,createParking());
 	}
 
 	private List<IIngressRules> addIngressRules(IBillRepository iBillRepository, Parking parking) {
@@ -32,6 +36,14 @@ public class Parking2018Config {
 		listIngressRules.add(new WorkshopCapacity(iBillRepository, parking));
 
 		return listIngressRules;
+	}
+	
+	private List<IExitRules> addExitRules(IBillRepository iBillRepository, Parking parking) {
+
+		List<IExitRules> listExitRules = new ArrayList<>();
+		listExitRules.add(new MotorcycleDisplacement(parking));
+		listExitRules.add(new TotalToPay(parking));
+		return listExitRules;
 	}
 
 	@Bean

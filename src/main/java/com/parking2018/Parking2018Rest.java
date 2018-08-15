@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import domain.Vigilant;
+import model.Bill;
 import model.Car;
 import model.Motorcycle;
+import model.Vehicle;
 
 @RestController
 @Transactional
@@ -24,17 +26,24 @@ public class Parking2018Rest
 	
 	@RequestMapping(value = "/registry/car", method = RequestMethod.POST)
 	@ResponseBody
-	public void carRegistry(@RequestBody Car car)
+	public Bill carRegistry(@RequestBody Car car)
 	{
 		Calendar ingressDate =  Calendar.getInstance();
-		vigilant.vehicleRegistry(car, ingressDate);
+		return vigilant.vehicleRegistry(car, ingressDate);
 	}
 	
 	@RequestMapping(value = "/registry/motorcycle", method = RequestMethod.POST)
 	@ResponseBody
-	public void carRegistry(@RequestBody Motorcycle motorcycle)
+	public Bill carRegistry(@RequestBody Motorcycle motorcycle)
 	{
 		Calendar ingressDate =  Calendar.getInstance();
-		vigilant.vehicleRegistry(motorcycle, ingressDate);
+		return vigilant.vehicleRegistry(motorcycle, ingressDate);
+	}
+	
+	@RequestMapping(value = "/exit/car", method = RequestMethod.POST)
+	@ResponseBody
+	public Bill vehicleExit(@RequestBody Vehicle vehicle)
+	{
+		return vigilant.vehicleExit(vehicle.getPlate());
 	}
 }
