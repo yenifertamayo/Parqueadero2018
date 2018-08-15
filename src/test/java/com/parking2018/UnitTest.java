@@ -27,16 +27,16 @@ public class UnitTest {
 	@Test
 	public void carRegistryTest()
 	{
-		Vehicle vehicle = new Car("ASD123");
+		Vehicle vehicle = new Car("SSD123");
 		vigilant.vehicleRegistry(vehicle, Calendar.getInstance());
-		assertEquals(vehicle.plate, "ASD123");
+		assertEquals(vehicle.plate, "SSD123");
 	}
 
 	@Test
 	public void motorcycleRegistryTest()
 	{
-		Vehicle vehicle = new Motorcycle("ASD12B", 125);
+		Vehicle vehicle = new Motorcycle("SSD12B", 125);
 		vigilant.vehicleRegistry(vehicle, Calendar.getInstance());
-		assertEquals(vehicle.plate, "ASD12B");
+		assertEquals(vehicle.plate, "SSD12B");
 	}
 }
