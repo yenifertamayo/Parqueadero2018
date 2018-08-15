@@ -39,15 +39,14 @@ public class TotalToPay implements IExitRules{
 
 		double hours = Math.ceil((exactTimeInWorkshop / (60 * 60 * 1000)));
 		
-		for(int i = 9; hours >= i; i+=9){
+		for(int i = 24; hours >= i; i+=24){
 			
-			if (hours >= 24) {
-				
-				hours -= 24;
-				continue;
-			}
+			hours -= 24;
+		}
+		
+		if(hours >= 9 || hours < 0){
 			
-			hours-=9;
+			hours = 0;
 		}
 		
 		return hours;
@@ -66,7 +65,7 @@ public class TotalToPay implements IExitRules{
 		
 		if (hours >= 9) {
 			
-			days += (int) Math.floor((exactTimeInWorkshop / (9 * 60 * 60 * 1000))) % 9;
+			days += 1;
 		}
 		
 		return (int) days;

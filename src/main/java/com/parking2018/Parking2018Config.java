@@ -23,6 +23,7 @@ import model.Parking;
 
 @Configuration
 public class Parking2018Config {
+	
 	@Bean
 	public Vigilant createVigilant(IVehicleRepository iVehicleRepository, IBillRepository iBillRepository,
 			Parking parking) {
