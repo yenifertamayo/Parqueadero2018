@@ -12,6 +12,7 @@ import dao.builder.BillBuilder;
 import dao.builder.VehicleBuilder;
 import dao.entity.BillEntity;
 import dao.entity.VehicleEntity;
+import domain.constants.ParkingConstants;
 import domain.repository.IBillRepository;
 import model.Bill;
 import model.ParkedVehicle;
@@ -123,10 +124,10 @@ public class BillDaoRepository implements IBillRepository {
 
 		if (vehicle instanceof Motorcycle) {
 			
-			return "Moto";
+			return ParkingConstants.MOTORCYCLE;
 		}
 
-		return "Carro";
+		return ParkingConstants.CAR;
 	}
 
 }

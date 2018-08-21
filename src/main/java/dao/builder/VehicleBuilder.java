@@ -1,6 +1,7 @@
 package dao.builder;
 
 import dao.entity.VehicleEntity;
+import domain.constants.ParkingConstants;
 import model.Car;
 import model.Motorcycle;
 import model.Vehicle;
@@ -17,13 +18,13 @@ public final class VehicleBuilder
 		VehicleEntity vehicleEntity = new VehicleEntity();
 
 		if (vehicle instanceof Motorcycle) {
-			vehicleEntity.setType("Moto");
+			vehicleEntity.setType(ParkingConstants.MOTORCYCLE);
 			vehicleEntity.setPlate(vehicle.getPlate());
 			vehicleEntity.setDisplacement(((Motorcycle) vehicle).getDisplacement());
 		}
 		
 		else {
-			vehicleEntity.setType("Carro");
+			vehicleEntity.setType(ParkingConstants.CAR);
 			vehicleEntity.setPlate(vehicle.getPlate());
 			vehicleEntity.setDisplacement(0);
 		}
@@ -37,7 +38,7 @@ public final class VehicleBuilder
 		
 		if(vehicleEntity != null) 
 		{
-			if(vehicleEntity.getType().equals("Moto"))
+			if(vehicleEntity.getType().equals(ParkingConstants.MOTORCYCLE))
 			{
 				vehicle = new Motorcycle(vehicleEntity.getPlate(), vehicleEntity.getDisplacement());
 			}

@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import domain.constants.MessageConstants;
 import domain.repository.IBillRepository;
 import exception.ParkingException;
 import model.Car;
@@ -39,16 +40,16 @@ public class WorkshopCapacity implements IIngressRules {
 
 	private void validateCapacityCar(Long numberOfVehicles) {
 
-		if (numberOfVehicles >= 2) {
+		if (numberOfVehicles >= parking.getMaxCars()) {
 
-			throw new ParkingException("No hay cupo para carro");
+			throw new ParkingException(MessageConstants.NO_CAR_SPACE);
 		}
 	}
 
 	private void validateCapacityMotorcycle(Long numberOfVehicles) {
 
-		if (numberOfVehicles >= 1) {
-			throw new ParkingException("No hay cupo para moto");
+		if (numberOfVehicles >= parking.getMaxMotorcycles()) {
+			throw new ParkingException(MessageConstants.NO_MOTORCYCLE_SPACE);
 		}
 	}
 

@@ -15,11 +15,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import domain.Vigilant;
+import domain.constants.MessageConstants;
 import exception.ParkingException;
 import model.Bill;
 import model.Car;
 import model.Motorcycle;
 import model.ParkedVehicle;
+import model.Parking;
 import model.Vehicle;
 
 @RunWith(SpringRunner.class)
@@ -27,8 +29,11 @@ import model.Vehicle;
 @DataJpaTest
 public class UnitTest {
 	
-	@Autowired(required = true)
+	@Autowired
 	Vigilant vigilant;
+	
+	@Autowired
+	Parking parking;
 	
 	@Test
 	public void carRegistryTest()
@@ -71,7 +76,7 @@ public class UnitTest {
 
 		} catch (ParkingException e) {
 
-			Assert.assertEquals("No autorizado. No es un día habil para su ingreso.", e.getMessage());
+			Assert.assertEquals(MessageConstants.NOT_AUTORIZED, e.getMessage());
 		}
 	}
 	
@@ -179,7 +184,7 @@ public class UnitTest {
 
 		} catch (ParkingException e) {
 
-			Assert.assertEquals("El vehiculo no se encuntra parqueado actualmente.", e.getMessage());
+			Assert.assertEquals(MessageConstants.VEHICLE_IS_NOT_PARKED, e.getMessage());
 		}
 	}
 	
@@ -196,7 +201,7 @@ public class UnitTest {
 
 		} catch (ParkingException e) {
 
-			Assert.assertEquals("El vehiculo ya esta en el parqueadero.", e.getMessage());
+			Assert.assertEquals(MessageConstants.VEHICLE_IS_PARKED, e.getMessage());
 		}
 	}
 	
@@ -213,5 +218,56 @@ public class UnitTest {
 		List<ParkedVehicle> parkedVehiclesList = vigilant.getListParked();
 		
 		assertEquals(2, parkedVehiclesList.size());
+	}
+	
+	@Test
+	public void vehicleListEmptyTest(){
+		
+		List<ParkedVehicle> parkedVehiclesList = vigilant.getListParked();
+		assertEquals(0, parkedVehiclesList.size());
+	}
+	
+	@Test
+	public void carRegistry20Cars(){
+
+		Calendar ingressDate = DateBuilder.dateDiferentToMonday();	
+		Vehicle car1 = new Car("NSD12B");
+		vigilant.vehicleRegistry(car1, ingressDate);
+		Vehicle car2 = new Car("SSD12B");
+		vigilant.vehicleRegistry(car2, ingressDate);
+		parking.setMaxCars(2);
+
+		Vehicle car3 = new Car("MSD12B");
+		
+		try {
+			vigilant.vehicleRegistry(car3, ingressDate);
+			fail();
+
+		} catch (ParkingException e) {
+
+			Assert.assertEquals(MessageConstants.NO_CAR_SPACE, e.getMessage());
+		}
+	}
+	
+	@Test
+	public void carRegistry10Motorcycles(){
+
+		Calendar ingressDate = DateBuilder.dateDiferentToMonday();	
+		Vehicle motorcycle1 = new Motorcycle("NSD12B", 125);
+		vigilant.vehicleRegistry(motorcycle1, ingressDate);
+		Vehicle motorcycle2 = new Motorcycle("SSD12B", 125);
+		vigilant.vehicleRegistry(motorcycle2, ingressDate);
+		parking.setMaxMotorcycles(2);
+
+		Vehicle motorcycle3 = new Motorcycle("MSD12B", 125);
+		
+		try {
+			vigilant.vehicleRegistry(motorcycle3, ingressDate);
+			fail();
+
+		} catch (ParkingException e) {
+
+			Assert.assertEquals(MessageConstants.NO_MOTORCYCLE_SPACE, e.getMessage());
+		}
 	}
 }

@@ -48,17 +48,18 @@ public class Parking2018Config {
 
 	@Bean
 	public Parking createParking() {
-		int maxCars = 20;
-		int maxMotorcycles = 10;
-		int maxDisplacementMotorcycle = 500;
-		double surplusMotorcycle = 2000;
-		double valueHourCar = 1000;
-		double valueDayCar = 8000;
-		double valueHourMotorcycle = 500;
-		double valueDayMotorcycle = 4000;
-		return new Parking(maxCars, maxMotorcycles, maxDisplacementMotorcycle, surplusMotorcycle,
-				valueHourCar, valueDayCar, valueHourMotorcycle, valueDayMotorcycle);
 
+		Parking parking = new Parking();
+		parking.setMaxCars(20);
+		parking.setMaxMotorcycles(10);
+		parking.setMaxDisplacementMotorcycle(500);
+		parking.setSurplusMotorcycle(2000);
+		parking.setValueHourCar(1000);
+		parking.setValueDayCar(8000);
+		parking.setValueHourMotorcycle(500);
+		parking.setValueDayMotorcycle(4000);
+		
+		return parking;
 	}
 
 	@Bean

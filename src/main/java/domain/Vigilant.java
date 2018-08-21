@@ -3,6 +3,7 @@ package domain;
 import java.util.Calendar;
 import java.util.List;
 
+import domain.constants.MessageConstants;
 import domain.repository.IBillRepository;
 import domain.repository.IVehicleRepository;
 import domain.rules.IExitRules;
@@ -33,6 +34,8 @@ public class Vigilant {
 
 	public Bill vehicleRegistry(Vehicle vehicle, Calendar ingressDate) {
 
+		vehicle.setPlate(convertToCapitalLetter(vehicle.getPlate()));
+		
 		isPossibleIngress(vehicle, ingressDate);
 
 		if (validateVehicleRegistred(vehicle.getPlate())) {
@@ -53,7 +56,7 @@ public class Vigilant {
 	private void isPossibleIngress(Vehicle vehicle, Calendar ingressDate) {
 
 		if (validateIsParked(vehicle.getPlate())) {
-			throw new ParkingException("El vehiculo ya esta en el parqueadero.");
+			throw new ParkingException(MessageConstants.VEHICLE_IS_PARKED);
 		}
 
 		validateIngressRules(vehicle, ingressDate);
@@ -75,6 +78,8 @@ public class Vigilant {
 	
 	public Bill vehicleExit(String plate, Calendar exitDate) {
 
+		plate = convertToCapitalLetter(plate);
+		
 		if (validateIsParked(plate)) {
 
 			Bill bill = iBillRepository.getBillByPlate(plate);
@@ -86,7 +91,7 @@ public class Vigilant {
 			return bill;
 		}
 
-		throw new ParkingException("El vehiculo no se encuntra parqueado actualmente.");
+		throw new ParkingException(MessageConstants.VEHICLE_IS_NOT_PARKED);
 	}
 
 	private void validateExitRules(Bill bill) {
@@ -103,4 +108,9 @@ public class Vigilant {
 		return iBillRepository.getListParked();
 	}
 
+	private String convertToCapitalLetter(String plate) {
+	
+		return plate.toUpperCase();
+	}
+	
 }

@@ -2,6 +2,8 @@ package domain.rules;
 
 import java.util.Calendar;
 
+import domain.constants.MessageConstants;
+import domain.constants.ParkingConstants;
 import exception.ParkingException;
 import model.Vehicle;
 
@@ -18,7 +20,7 @@ public class PlateStartWithA implements IIngressRules {
 	}
 
 	private boolean validatePlate() {
-		if (vehicle.getPlate().startsWith("A")) {
+		if (vehicle.getPlate().startsWith(ParkingConstants.FIRST_WORD_RULE)) {
 			return validateDate();
 		}
 
@@ -31,7 +33,7 @@ public class PlateStartWithA implements IIngressRules {
 			return true;
 		}
 
-		throw new ParkingException("No autorizado. No es un día habil para su ingreso.");
+		throw new ParkingException(MessageConstants.NOT_AUTORIZED);
 	}
 
 }

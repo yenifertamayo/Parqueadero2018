@@ -17,4 +17,17 @@ public class ParkedVehicle {
 	public ParkedVehicle() {
 		
 	}
+
+	public String getPlate() {
+		return plate;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public Calendar getIngressDate() {
+		return ingressDate;
+	}
+	
 }
