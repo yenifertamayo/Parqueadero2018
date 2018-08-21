@@ -23,34 +23,33 @@ public class WorkshopCapacity implements IIngressRules {
 	}
 
 	@Override
-	public boolean validateRule(Vehicle vehicle, Calendar ingressDate) {
+	public void validateRule(Vehicle vehicle, Calendar ingressDate) {
 
 		Long numberOfVehicles = iBillRepository.getNumberOfVehicles(vehicle);
 
 		if (vehicle instanceof Car) {
-			return validateCapacityCar(numberOfVehicles);
+			validateCapacityCar(numberOfVehicles);
 		}
 
-		return validateCapacityMotorcycle(numberOfVehicles);
+		else {
+			
+			validateCapacityMotorcycle(numberOfVehicles);
+		}
 	}
 
-	private boolean validateCapacityCar(Long numberOfVehicles) {
+	private void validateCapacityCar(Long numberOfVehicles) {
 
-		if (numberOfVehicles >= parking.getMaxCars()) {
+		if (numberOfVehicles >= 2) {
 
 			throw new ParkingException("No hay cupo para carro");
 		}
-
-		return true;
 	}
 
-	private boolean validateCapacityMotorcycle(Long numberOfVehicles) {
+	private void validateCapacityMotorcycle(Long numberOfVehicles) {
 
-		if (numberOfVehicles >= parking.getMaxMotorcycles()) {
+		if (numberOfVehicles >= 1) {
 			throw new ParkingException("No hay cupo para moto");
 		}
-
-		return true;
 	}
 
 }

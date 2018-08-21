@@ -29,7 +29,7 @@ public class MotorcycleDisplacement implements IExitRules{
 
 	private double validateMotorcycleDisplacement(Bill bill) {
 		
-		if (((Motorcycle) bill.getVehicle()).getDisplacement() >= parking.getMaxDisplacementMotorcycle()) {
+		if (((Motorcycle) bill.getVehicle()).getDisplacement() > parking.getMaxDisplacementMotorcycle()) {
 			
 			double value = bill.getValueToPay() + parking.getSurplusMotorcycle();
 			bill.setValueToPay(value);

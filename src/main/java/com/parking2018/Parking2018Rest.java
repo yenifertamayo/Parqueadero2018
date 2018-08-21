@@ -46,7 +46,8 @@ public class Parking2018Rest
 	@ResponseBody
 	public Bill vehicleExit(@RequestBody Vehicle vehicle)
 	{
-		return vigilant.vehicleExit(vehicle.getPlate());
+		Calendar exitDate =  Calendar.getInstance();
+		return vigilant.vehicleExit(vehicle.getPlate(), exitDate);
 	}
 	
 	

@@ -11,10 +11,10 @@ public class PlateStartWithA implements IIngressRules {
 	private Calendar ingressDate;
 
 	@Override
-	public boolean validateRule(Vehicle vehicle, Calendar ingressDate) {
+	public void validateRule(Vehicle vehicle, Calendar ingressDate) {
 		this.vehicle = vehicle;
 		this.ingressDate = ingressDate;
-		return validatePlate();
+		validatePlate();
 	}
 
 	private boolean validatePlate() {

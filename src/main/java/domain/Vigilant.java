@@ -53,7 +53,7 @@ public class Vigilant {
 	private void isPossibleIngress(Vehicle vehicle, Calendar ingressDate) {
 
 		if (validateIsParked(vehicle.getPlate())) {
-			throw new ParkingException("El vehiculo ya esta en el parqueadero");
+			throw new ParkingException("El vehiculo ya esta en el parqueadero.");
 		}
 
 		validateIngressRules(vehicle, ingressDate);
@@ -73,12 +73,11 @@ public class Vigilant {
 
 	}
 	
-	public Bill vehicleExit(String plate) {
+	public Bill vehicleExit(String plate, Calendar exitDate) {
 
 		if (validateIsParked(plate)) {
 
 			Bill bill = iBillRepository.getBillByPlate(plate);
-			Calendar exitDate = Calendar.getInstance();
 			bill.setExitDate(exitDate);
 			
 			validateExitRules(bill);
@@ -87,7 +86,7 @@ public class Vigilant {
 			return bill;
 		}
 
-		throw new ParkingException("El vehiculo no se encuntra parqueado actualmente");
+		throw new ParkingException("El vehiculo no se encuntra parqueado actualmente.");
 	}
 
 	private void validateExitRules(Bill bill) {
