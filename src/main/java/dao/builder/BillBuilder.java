@@ -7,7 +7,7 @@ import model.Vehicle;
 public final class BillBuilder 
 {
 	private BillBuilder() {
-		throw new IllegalStateException("Utility class");
+		
 	}
 	
 	public static BillEntity convertToEntity(Bill bill) 

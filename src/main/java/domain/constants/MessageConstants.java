@@ -2,8 +2,6 @@ package domain.constants;
 
 public final class MessageConstants {
 	
-	
-
 	private MessageConstants() {
 		super();
 	}
