@@ -1,7 +1,13 @@
 package domain.constants;
 
 public class MessageConstants {
+	
+	
 
+	public MessageConstants() {
+		super();
+	}
+	
 	public static final String NOT_AUTORIZED = "No autorizado. No es un día habil para su ingreso.";
 	public static final String NO_CAR_SPACE = "No hay cupo para carro.";
 	public static final String NO_MOTORCYCLE_SPACE = "No hay cupo para moto.";
