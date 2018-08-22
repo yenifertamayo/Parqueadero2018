@@ -1,6 +1,6 @@
 package domain.constants;
 
-public class MessageConstants {
+public final class MessageConstants {
 	
 	
 
