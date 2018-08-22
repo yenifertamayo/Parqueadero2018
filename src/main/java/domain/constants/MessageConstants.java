@@ -4,7 +4,7 @@ public class MessageConstants {
 	
 	
 
-	public MessageConstants() {
+	private MessageConstants() {
 		super();
 	}
 	
